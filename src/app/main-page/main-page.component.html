@@ -1,0 +1,22 @@
+<div class="main">
+  <div class="container">
+    <div class="m-container row">
+        <h1 class="maintext"> <span class="victory-v">JS</span>challange</h1>
+    </div>
+
+  <div class="text">
+    <h1>Sort of...</h1>
+    <h5>(It's Angular)</h5>
+    <h2>Inspired by <a  href="https://javascript30.com/">Wes Bos javascript30</a></h2>
+  </div>
+     <div class="wrapper row">
+        <div  *ngFor="let button of buttons">
+          <button class="button" [routerLink]='button.root'>{{button.name}}</button> 
+      </div> 
+      </div>  
+ 
+
+
+ 
+  </div>
+</div>

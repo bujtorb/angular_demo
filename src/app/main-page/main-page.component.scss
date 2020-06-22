@@ -1,0 +1,133 @@
+.main {
+	margin: 0;
+	height: 100%;
+/* 	background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%); */
+	background-image: url(./../../assets/the-sun-music-palm-trees-background-wallpaper-preview.jpg);
+	background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow:auto;
+  -ms-overflow-style: none;
+  padding-bottom: 3em;
+  height: 100vh;
+}
+
+.main::-webkit-scrollbar {
+    display: none;
+  }
+  
+
+.button {
+  
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: linear-gradient(45deg, #00bcdd 0%, #ff00ff 100%);
+    color: #fafafa;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    min-width: 150px;
+    width: 300px;
+    box-shadow: -5px 5px  darken($color: #00bcdd, $amount: 30%), -4px 4px  #00bcdd, -2px 2px  #00bcdd;
+    border: 1px solid  #00bcdd;
+    transition: all .5s ease-in-out;
+
+  }
+
+  .button:hover{
+    transform: scale(1.1);
+    
+  }
+
+  .button:active{
+    transform: scale(1.1);
+    transform: translateY(4px);
+  }
+
+  .text {
+    margin-top:10em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #f008b7;
+    font-family: 'Permanent Marker', cursive;
+  }
+
+.wrapper {
+     margin-top:10em; 
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+  }
+  
+.m-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding-top: 150px;
+}
+  .maintext {
+    font-family: 'Permanent Marker', cursive;
+    font-variant:small-caps;
+    font-size: 10vw;
+    transform: skew(-15deg,-15deg);
+    background-image: -webkit-linear-gradient(#FF0FF8 0%,  #F9F9F7 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 auto;
+    filter: drop-shadow(2px 2px 20px #f008b7);
+  }
+
+ /*   .victory:before {
+    content: '-';
+    position: absolute;
+    bottom: -98px;
+    left: 254px;
+    background-image: -webkit-linear-gradient(#F3C8F3 0%, #F3C8F3 100%);
+    background-clip: text;
+    text-shadow: 70px -7px #F3C8F3;
+  } */
+  
+  /* .victory:after {
+    content: '-';
+    position: absolute;
+    bottom: -85px;
+    left: 395px;
+    background-image: -webkit-linear-gradient(#F3C8F3 0%, #F3C8F3 100%);
+    background-clip: text;
+    text-shadow: 70px -5px #F3C8F3;
+  } * /
+  
+
+  
+/*   .victory-v:before {
+    content: '-';
+    position: absolute;
+    top: -71px;
+    left: -71px;
+    background-image: -webkit-linear-gradient(#FF0FF8 0%,  #FC96FC 100%);
+    background-clip: text;
+  } */
+  
+ /*  .victory-v:after {
+    content: '-';
+    position: absolute;
+    top: -72px;
+    left: 103px;
+    background-image: -webkit-linear-gradient(#FF0FF8 0%,  #FC96FC 100%);
+    background-clip: text;
+  } */
+  .victory-v {
+    position: relative;
+    background-image: -webkit-linear-gradient(#FF0FF8 0%,  #F9F9F7 100%);
+    background-clip: text;
+    padding-right: 18px;
+    margin-right: -18px;
+  }

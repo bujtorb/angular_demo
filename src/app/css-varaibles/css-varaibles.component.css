@@ -1,0 +1,38 @@
+
+  .cont{
+    margin: 0 auto;
+    height: auto;
+    width: 800px;
+  }
+  
+  img {
+  padding:  10px;
+  background: #ffc600;
+  /* filter:blur(5px); */
+  height: auto;
+  width: 100%;
+  }
+  
+  .hl {
+    color: var(--base);
+  }
+  
+  .main {
+    text-align: center;
+    background: #193549;
+    color: white;
+    font-family: 'helvetica neue', sans-serif;
+    font-weight: 100;
+    font-size: 50px;
+    height: 100%;
+  }
+  
+  .controls {
+    margin-bottom: 50px;
+  }
+  
+  input {
+    width: 100px;
+  }
+  
+  

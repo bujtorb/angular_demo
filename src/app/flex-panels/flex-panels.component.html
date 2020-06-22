@@ -1,0 +1,11 @@
+<div class="main">
+      <div class="panels">
+        <div *ngFor="let item of items; index as i" 
+        (click)="toggleClass(item)" 
+        [ngClass]="{'open open-active': item.active}" class="panel panel{{i+1}}"> 
+        <p>{{item.topText}}</p>
+        <p>{{item.middleText}}</p> 
+        <p>{{item.bottomText}}</p></div>
+      </div>
+</div>
+

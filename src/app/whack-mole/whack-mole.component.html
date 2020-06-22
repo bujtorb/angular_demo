@@ -1,0 +1,30 @@
+
+
+  <div class="main">
+    <h1>Whack-a-mole! <span class="score">{{score}}</span></h1>
+    <div class="wrapper">
+        <button class= "btn" (click)="startGame()">Start!</button>
+    </div>
+  
+    <div class="game">
+        <div #holes class="hole hole1 ">
+          <div appBonk (scoreOP)="addScore($event)" class="mole"></div>
+        </div>
+        <div #holes class="hole hole2">
+          <div appBonk (scoreOP)="addScore($event)" class="mole"></div>
+        </div>
+        <div #holes class="hole hole3">
+          <div appBonk (scoreOP)="addScore($event)" class="mole"></div>
+        </div>
+        <div #holes class="hole hole4">
+          <div appBonk (scoreOP)="addScore($event)" class="mole"></div>
+        </div>
+        <div #holes class="hole hole5">
+          <div appBonk (scoreOP)="addScore($event)" class="mole"></div>
+        </div>
+        <div #holes class="hole hole6">
+          <div appBonk (scoreOP)="addScore($event)" class="mole"></div>
+        </div>
+      </div>
+  </div>
+
