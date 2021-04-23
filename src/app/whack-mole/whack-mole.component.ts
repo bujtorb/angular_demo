@@ -15,7 +15,7 @@ lastHole: any;
 score = 0;
 timeUp: boolean;
 holesArray: string | any[];
-  constructor( private renderer: Renderer2, private el: ElementRef ) { }
+  constructor( private renderer: Renderer2 ) { }
   ngAfterViewInit(): void {
      console.log(this.holes.toArray());
      this.holesArray = this.holes.toArray();

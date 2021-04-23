@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './flex-panels.component.html',
   styleUrls: ['./flex-panels.component.scss'],
 })
-export class FlexPanelsComponent implements OnInit {
+export class FlexPanelsComponent {
   items = [
     {
       topText: 'Hey',
@@ -35,8 +35,6 @@ export class FlexPanelsComponent implements OnInit {
   ];
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   toggleClass(item): void {
     item.active = !item.active;
