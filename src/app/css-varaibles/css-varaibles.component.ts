@@ -5,12 +5,9 @@ import { Component, OnInit, ViewChild, ElementRef, HostListener, Renderer2 } fro
   templateUrl: './css-varaibles.component.html',
   styleUrls: ['./css-varaibles.component.css']
 })
-export class CssVaraiblesComponent implements OnInit {
+export class CssVaraiblesComponent  {
 
-  constructor(private  el: ElementRef, private renderer: Renderer2) { }
+  constructor() { }
 
-  ngOnInit(): void {
-
-  }
 
 }

@@ -11,10 +11,10 @@ export class WhackMoleComponent implements OnInit, AfterViewInit {
   @ViewChildren('holes') holes: QueryList<any>;
 
 
-lastHole;
+lastHole: any;
 score = 0;
-timeUp;
-holesArray;
+timeUp: boolean;
+holesArray: string | any[];
   constructor( private renderer: Renderer2, private el: ElementRef ) { }
   ngAfterViewInit(): void {
      console.log(this.holes.toArray());
@@ -25,12 +25,11 @@ holesArray;
 
   }
 
-  randomTime(min, max){
-
+  randomTime(min, max): number{
     return Math.round( Math.random() * (max - min) + min);
   }
 
-  randomHole(){
+  randomHole(): any{
     const idx = Math.floor(Math.random() * this.holesArray.length);
     const hole = this.holesArray[idx];
 
@@ -42,14 +41,14 @@ holesArray;
     return hole;
     }
 
-  startGame() {
+  startGame(): void {
     this.score = 0;
     this.timeUp = false;
     this.peep();
     setTimeout(() => this.timeUp = true, 10000);
   }
 
-   peep(){
+   peep(): void{
 
     const time = this.randomTime(500, 2000);
     const hole = this.randomHole();
@@ -62,7 +61,7 @@ holesArray;
     }, time);
   }
 
-  addScore(args){
+  addScore(args): void{
   this.score++;
   }
 

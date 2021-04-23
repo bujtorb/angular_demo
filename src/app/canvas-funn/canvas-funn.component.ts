@@ -5,7 +5,7 @@ import { Component, OnInit, ViewChild, ElementRef, HostListener, AfterViewInit }
   templateUrl: './canvas-funn.component.html',
   styleUrls: ['./canvas-funn.component.scss']
 })
-export class CanvasFunnComponent implements OnInit, AfterViewInit {
+export class CanvasFunnComponent implements  AfterViewInit {
 
 @ViewChild('canvas', {static: true}) canvas: ElementRef<HTMLCanvasElement>;
 
@@ -19,10 +19,6 @@ private direction = true;
   constructor() { }
 
 
-  ngOnInit(): void {
-
-  }
-
   ngAfterViewInit(): void {
     this.ctx = this.canvas.nativeElement.getContext('2d');
 
@@ -33,9 +29,6 @@ private direction = true;
     this.ctx.lineCap = 'round';
     this.ctx.lineWidth = 100;
   }
-
-
-
 
   @HostListener('window:mousemove', ['$event'])
   draw(e) {
@@ -80,6 +73,5 @@ drawing(e) {
 finished(){
   this.isDrawing = false;
 }
-
 
 }

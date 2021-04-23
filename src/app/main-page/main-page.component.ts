@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss']
 })
-export class MainPageComponent implements OnInit {
+export class MainPageComponent {
 
 buttons = [
   {name: 'Drumkit', root: 'drumkit'},
@@ -15,14 +15,9 @@ buttons = [
   {name: 'CSS Variables', root: 'cssvariables'},
   {name: 'Whack-a-mole', root: 'mole'},
 
-
 ];
-
-
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }

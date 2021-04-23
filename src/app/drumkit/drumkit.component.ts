@@ -5,11 +5,7 @@ import { Component, OnInit, HostListener, ElementRef, AfterViewInit, HostBinding
   templateUrl: './drumkit.component.html',
   styleUrls: ['./drumkit.component.scss']
 })
-export class DrumkitComponent implements OnInit {
+export class DrumkitComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

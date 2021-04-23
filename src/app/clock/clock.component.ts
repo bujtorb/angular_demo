@@ -23,7 +23,7 @@ export class ClockComponent implements OnInit {
   }
 
 
-  setDate() {
+  setDate(): void {
     const now = new Date();
 
     const sec = now.getSeconds();
