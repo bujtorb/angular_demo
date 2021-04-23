@@ -5,7 +5,7 @@ import { Component, OnInit, ViewChildren, QueryList, ElementRef, ViewChild, Afte
   templateUrl: './whack-mole.component.html',
   styleUrls: ['./whack-mole.component.scss']
 })
-export class WhackMoleComponent implements OnInit, AfterViewInit {
+export class WhackMoleComponent implements  AfterViewInit {
 
 
   @ViewChildren('holes') holes: QueryList<any>;
@@ -21,9 +21,6 @@ holesArray: string | any[];
      this.holesArray = this.holes.toArray();
   }
 
-  ngOnInit(): void {
-
-  }
 
   randomTime(min, max): number{
     return Math.round( Math.random() * (max - min) + min);
