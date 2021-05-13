@@ -7,7 +7,4 @@ import { Component, OnInit, ViewChild, ElementRef, HostListener, Renderer2 } fro
 })
 export class CssVaraiblesComponent  {
 
-  constructor() { }
-
-
 }

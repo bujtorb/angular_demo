@@ -11,13 +11,14 @@ export class DrumkitPlayDirective {
   handleKeyDown(event: KeyboardEvent) {
     console.log(event);
 
-    let audio;
-    let key;
+    let audio: any;
+    let key: any;
 
     if (event != null) {
-      audio = this.elementRef.nativeElement.querySelector(`audio[data-key="${event.keyCode}"]`);
-      key =  this.elementRef.nativeElement.querySelector(`.key[data-key="${event.keyCode}"]`);
-      }
+      audio = this.elementRef.nativeElement.querySelector(`audio[data-key="${event.key}"]`);
+      key =  this.elementRef.nativeElement.querySelector(`.key[data-key="${event.key}"]`);
+      console.log(key)  
+    }
 
     if (!audio) {
         return;
@@ -30,7 +31,8 @@ export class DrumkitPlayDirective {
 
   @HostListener('window:keyup', ['$event'])
   handleKeyUp(event: KeyboardEvent) {
-    const key =  this.elementRef.nativeElement.querySelector(`.key[data-key="${event.keyCode}"]`);
+    const key =  this.elementRef.nativeElement.querySelector(`.key[data-key="${event.key}"]`);
+    console.log(key)
     this.renderer.removeClass(key, 'playing');
   }
 
