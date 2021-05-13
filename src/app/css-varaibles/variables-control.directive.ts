@@ -1,9 +1,4 @@
-import {
-  Directive,
-  HostListener,
-  ElementRef,
-  Renderer2,
-} from '@angular/core';
+import { Directive, HostListener, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appVariablesControl]',
@@ -18,10 +13,7 @@ export class VariablesControlDirective {
     if (this.isMousDown) {
       const name = event.target.name;
       const value = event.target.value;
-      const suffix = event.target.attributes.sizing || '';
       const img = document.querySelector('.img');
-
-      console.log(name);
       if (name === 'filter') {
         this.renderer.setStyle(img, `${name}`, `blur(${value}px)`);
       } else if (name === 'background') {
@@ -31,9 +23,11 @@ export class VariablesControlDirective {
     }
   }
 
+  @HostListener('window:change', ['$event'])
   @HostListener('window:mousedown', ['$event'])
   mouseDown(e) {
     this.isMousDown = true;
+    this.handleChange(e);
   }
 
   @HostListener('window:mouseup', ['$event'])

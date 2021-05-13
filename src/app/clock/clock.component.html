@@ -1,9 +1,9 @@
 <div class="main">
-    <div class="clock">
-        <div class="clock-face">
-          <div #hourHand class="hand hour-hand"></div>
-          <div #minutesHand class="hand min-hand"></div>
-          <div #secondHand class="hand second-hand"></div>
-        </div>
-      </div>
+  <div class="clock" *ngIf="!isLoading">
+    <div class="clock-face">
+      <div #hourHand class="hand hour-hand"></div>
+      <div #minutesHand class="hand min-hand"></div>
+      <div #secondHand class="hand second-hand"></div>
+    </div>
+  </div>
 </div>

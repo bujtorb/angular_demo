@@ -1,23 +1,26 @@
-import { Component, OnInit, ViewChild, ElementRef, HostListener, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  HostListener,
+  AfterViewInit,
+} from '@angular/core';
 
 @Component({
   selector: 'app-canvas-funn',
   templateUrl: './canvas-funn.component.html',
-  styleUrls: ['./canvas-funn.component.scss']
+  styleUrls: ['./canvas-funn.component.scss'],
 })
-export class CanvasFunnComponent implements  AfterViewInit {
+export class CanvasFunnComponent implements AfterViewInit {
+  @ViewChild('canvas', { static: true }) canvas: ElementRef<HTMLCanvasElement>;
 
-@ViewChild('canvas', {static: true}) canvas: ElementRef<HTMLCanvasElement>;
-
-private ctx: CanvasRenderingContext2D;
-private isDrawing = false;
-private lastX = 0;
-private lastY = 0;
-private hue = 0;
-private direction = true;
-
-  constructor() { }
-
+  private ctx: CanvasRenderingContext2D;
+  private isDrawing = false;
+  private lastX = 0;
+  private lastY = 0;
+  private hue = 0;
+  private direction = true;
 
   ngAfterViewInit(): void {
     this.ctx = this.canvas.nativeElement.getContext('2d');
@@ -32,7 +35,6 @@ private direction = true;
 
   @HostListener('window:mousemove', ['$event'])
   draw(e) {
-
     if (!this.isDrawing) {
       return;
     }
@@ -47,31 +49,30 @@ private direction = true;
     [this.lastX, this.lastY] = [e.offsetX, e.offsetY];
     this.hue++;
     if (this.hue >= 360) {
-        this.hue = 0;
+      this.hue = 0;
     }
 
     if (this.ctx.lineWidth >= 100 || this.ctx.lineWidth <= 1) {
-        this.direction = !this.direction;
+      this.direction = !this.direction;
     }
     if (this.direction) {
-        this.ctx.lineWidth++;
+      this.ctx.lineWidth++;
     } else {
-        this.ctx.lineWidth--;
+      this.ctx.lineWidth--;
     }
 
     console.log(e);
-}
+  }
 
-@HostListener('window:mousedown', ['$event'])
-drawing(e) {
-  this.isDrawing = true;
-  [this.lastX, this.lastY] = [e.offsetX, e.offsetY];
-}
+  @HostListener('window:mousedown', ['$event'])
+  drawing(e) {
+    this.isDrawing = true;
+    [this.lastX, this.lastY] = [e.offsetX, e.offsetY];
+  }
 
-@HostListener('window:mouseup', ['$event'])
-@HostListener('window:mouseout', ['$event'])
-finished(){
-  this.isDrawing = false;
-}
-
+  @HostListener('window:mouseup', ['$event'])
+  @HostListener('window:mouseout', ['$event'])
+  finished() {
+    this.isDrawing = false;
+  }
 }
