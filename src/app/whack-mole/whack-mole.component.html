@@ -1,30 +1,42 @@
 
 
   <div class="main">
-    <h1>Whack-a-mole! <span class="score">{{score}}</span></h1>
-    <div class="wrapper">
-        <button class= "btn" (click)="startGame()">Start!</button>
+    <div class="title">
+      <h1>Whack-a-mole! </h1>
+      <h2>Your score:<span class="score">{{score}}</span></h2>
+      <h2>Remaining time:<span >{{gameTime}}</span></h2>
+      <div class="wrapper">
+          <button class= "btn" (click)="initGame()">Start!</button>
+          <button class= "btn" (click)="stopGame()">Stop!</button>
+      </div>
     </div>
+
   
     <div class="game">
+      <!-- <div class="holes"> -->
         <div #holes class="hole hole1 ">
-          <div appBonk (scoreOP)="addScore($event)" class="mole"></div>
+          <div appBonk (scoreOP)="addScore()" class="mole"></div>
         </div>
         <div #holes class="hole hole2">
-          <div appBonk (scoreOP)="addScore($event)" class="mole"></div>
+          <div appBonk (scoreOP)="addScore()" class="mole"></div>
         </div>
         <div #holes class="hole hole3">
-          <div appBonk (scoreOP)="addScore($event)" class="mole"></div>
+          <div appBonk (scoreOP)="addScore()" class="mole"></div>
         </div>
         <div #holes class="hole hole4">
-          <div appBonk (scoreOP)="addScore($event)" class="mole"></div>
+          <div appBonk (scoreOP)="addScore()" class="mole"></div>
         </div>
         <div #holes class="hole hole5">
-          <div appBonk (scoreOP)="addScore($event)" class="mole"></div>
+          <div appBonk (scoreOP)="addScore()" class="mole"></div>
         </div>
         <div #holes class="hole hole6">
-          <div appBonk (scoreOP)="addScore($event)" class="mole"></div>
+          <div appBonk (scoreOP)="addScore()" class="mole"></div>
         </div>
+    <!--   </div> -->
+      <div class="counter" *ngIf="counter">
+       {{count}}
+      </div>
+      
       </div>
   </div>
 

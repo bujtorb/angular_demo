@@ -1,66 +1,109 @@
-import { Component, OnInit, ViewChildren, QueryList, ElementRef, ViewChild, AfterViewInit, Renderer2, HostListener } from '@angular/core';
+import {
+  Component,
+  ViewChildren,
+  QueryList,
+  AfterViewInit,
+  Renderer2,
+} from '@angular/core';
+import { TimeInterval } from 'rxjs';
 
 @Component({
   selector: 'app-whack-mole',
   templateUrl: './whack-mole.component.html',
-  styleUrls: ['./whack-mole.component.scss']
+  styleUrls: ['./whack-mole.component.scss'],
 })
-export class WhackMoleComponent implements  AfterViewInit {
-
-
+export class WhackMoleComponent implements AfterViewInit {
   @ViewChildren('holes') holes: QueryList<any>;
 
+  counter: boolean;
+  count: number;
+  gameTime: number;
+  holesArray: string | any[];
+  lastHole: any;
+  peepControl: any;
+  remainingTimeInterval: any;
+  score: number;
+  timeUp: boolean;
 
-lastHole: any;
-score = 0;
-timeUp: boolean;
-holesArray: string | any[];
-  constructor( private renderer: Renderer2 ) { }
+  constructor(private renderer: Renderer2) {}
+
   ngAfterViewInit(): void {
-     console.log(this.holes.toArray());
-     this.holesArray = this.holes.toArray();
+    this.holesArray = this.holes.toArray();
   }
 
-
-  randomTime(min, max): number{
-    return Math.round( Math.random() * (max - min) + min);
+  randomTime(min, max): number {
+    return Math.round(Math.random() * (max - min) + min);
   }
 
-  randomHole(): any{
+  randomHole(): any {
     const idx = Math.floor(Math.random() * this.holesArray.length);
     const hole = this.holesArray[idx];
 
-    if (hole === this.lastHole){
+    if (hole === this.lastHole) {
       return this.randomHole();
     }
 
     this.lastHole = hole;
     return hole;
-    }
-
-  startGame(): void {
-    this.score = 0;
-    this.timeUp = false;
-    this.peep();
-    setTimeout(() => this.timeUp = true, 10000);
   }
 
-   peep(): void{
+  initGame(): void {
+    this.gameTime = 10;
+    this.score = 0;
+    this.count = 3;
+    this.timeUp = false;
+    this.counter = true;
+    this.stopGame();
+    this.startCounter();
+  }
 
+  startGame(): void {
+    this.peep();
+    this.remainingTimeInterval = setInterval(() => {
+      if (this.gameTime < 1) {
+        this.timeUp = true;
+        clearInterval(this.remainingTimeInterval);
+      } else {
+        this.gameTime--;
+      }
+    }, 1000);
+  }
+
+  startCounter(): void {
+    let counterControl = setInterval(() => {
+      if (this.count < 1) {
+        this.counter = false;
+        clearTimeout(counterControl);
+        this.startGame();
+      } else {
+        this.count--;
+      }
+    }, 1000);
+  }
+
+  stopGame(): void {
+    clearInterval(this.remainingTimeInterval);
+    clearTimeout(this.peepControl);
+
+    for (let item of this.holesArray) {
+      this.renderer.removeClass(item.nativeElement, 'up');
+    }
+  }
+
+  peep(): void {
     const time = this.randomTime(500, 2000);
     const hole = this.randomHole();
     this.renderer.addClass(hole.nativeElement, 'up');
 
-    setTimeout(() => {
+    this.peepControl = setTimeout(() => {
       this.renderer.removeClass(hole.nativeElement, 'up');
-      if (!this.timeUp)
-       {this. peep(); }
+      if (!this.timeUp) {
+        this.peep();
+      }
     }, time);
   }
 
-  addScore(args): void{
-  this.score++;
+  addScore(): void {
+    this.score++;
   }
-
-
 }

@@ -17,7 +17,4 @@ buttons = [
 
 ];
 
-  constructor() { }
-
-
 }
