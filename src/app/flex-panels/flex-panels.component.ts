@@ -34,7 +34,7 @@ export class FlexPanelsComponent {
     { topText: 'Life', middleText: 'In', bottomText: 'Motion', active: false },
   ];
 
-  toggleClass(item): void {
+  toggleClass(item: any): void {
     item.active = !item.active;
   }
 }

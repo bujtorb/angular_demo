@@ -10,4 +10,8 @@ export class Game {
         this.score = game.score;
         this.timeUp = game.timeUp;
     }
+
+    addScore(): void {
+        this.score++;
+      }
 }

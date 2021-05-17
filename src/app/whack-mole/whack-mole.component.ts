@@ -107,6 +107,6 @@ export class WhackMoleComponent implements AfterViewInit {
   }
 
   addScore(): void {
-    this.game.score++;
+    this.game.addScore();
   }
 }
