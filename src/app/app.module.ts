@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,8 @@ import { CssVaraiblesComponent } from './css-varaibles/css-varaibles.component';
 import { VariablesControlDirective } from './css-varaibles/variables-control.directive';
 import { WhackMoleComponent } from './whack-mole/whack-mole.component';
 import { BonkDirective } from './whack-mole/bonk.directive';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -29,9 +31,10 @@ import { BonkDirective } from './whack-mole/bonk.directive';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

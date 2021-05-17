@@ -5,7 +5,7 @@ import {
   AfterViewInit,
   Renderer2,
 } from '@angular/core';
-import { TimeInterval } from 'rxjs';
+import { Game } from './model/game.model';
 
 @Component({
   selector: 'app-whack-mole',
@@ -17,15 +17,16 @@ export class WhackMoleComponent implements AfterViewInit {
 
   counter: boolean;
   count: number;
-  gameTime: number;
+  game: Game;
   holesArray: string | any[];
   lastHole: any;
+  counterControl: any;
   peepControl: any;
   remainingTimeInterval: any;
-  score: number;
-  timeUp: boolean;
 
-  constructor(private renderer: Renderer2) {}
+
+  constructor(private renderer: Renderer2) {
+  }
 
   ngAfterViewInit(): void {
     this.holesArray = this.holes.toArray();
@@ -48,32 +49,18 @@ export class WhackMoleComponent implements AfterViewInit {
   }
 
   initGame(): void {
-    this.gameTime = 10;
-    this.score = 0;
     this.count = 3;
-    this.timeUp = false;
     this.counter = true;
+    this.game = new Game({gameTime:10, score:0, timeUp:false});
     this.stopGame();
     this.startCounter();
   }
 
-  startGame(): void {
-    this.peep();
-    this.remainingTimeInterval = setInterval(() => {
-      if (this.gameTime < 1) {
-        this.timeUp = true;
-        clearInterval(this.remainingTimeInterval);
-      } else {
-        this.gameTime--;
-      }
-    }, 1000);
-  }
-
   startCounter(): void {
-    let counterControl = setInterval(() => {
+    this.counterControl = setInterval(() => {
       if (this.count < 1) {
         this.counter = false;
-        clearTimeout(counterControl);
+        clearTimeout(this.counterControl);
         this.startGame();
       } else {
         this.count--;
@@ -81,10 +68,26 @@ export class WhackMoleComponent implements AfterViewInit {
     }, 1000);
   }
 
+  startGame(): void {
+    this.peep();
+    this.remainingTimeInterval = setInterval(() => {
+      if (this.game.gameTime < 1) {
+        this.game.timeUp = true;
+        clearInterval(this.remainingTimeInterval);
+      } else {
+        this.game.gameTime--;
+      }
+    }, 1000);
+  }
+
   stopGame(): void {
+    clearInterval(this.counterControl);
     clearInterval(this.remainingTimeInterval);
     clearTimeout(this.peepControl);
 
+    if(this.holesArray.length<1){
+      return;
+    }
     for (let item of this.holesArray) {
       this.renderer.removeClass(item.nativeElement, 'up');
     }
@@ -97,13 +100,13 @@ export class WhackMoleComponent implements AfterViewInit {
 
     this.peepControl = setTimeout(() => {
       this.renderer.removeClass(hole.nativeElement, 'up');
-      if (!this.timeUp) {
+      if (!this.game.timeUp) {
         this.peep();
       }
     }, time);
   }
 
   addScore(): void {
-    this.score++;
+    this.game.score++;
   }
 }
