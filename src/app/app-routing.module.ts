@@ -1,27 +1,41 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainPageComponent } from './main-page/main-page.component';
-import { DrumkitComponent } from './drumkit/drumkit.component';
-import { ClockComponent } from './clock/clock.component';
-import { FlexPanelsComponent } from './flex-panels/flex-panels.component';
-import { CanvasFunnComponent } from './canvas-funn/canvas-funn.component';
-import { CssVaraiblesComponent } from './css-varaibles/css-varaibles.component';
-import { WhackMoleComponent } from './whack-mole/whack-mole.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
-  { path: 'drumkit', component: DrumkitComponent },
-  { path: 'clock', component: ClockComponent },
-  { path: 'flex', component: FlexPanelsComponent },
-  { path: 'canvas', component: CanvasFunnComponent },
-  { path: 'cssvariables', component: CssVaraiblesComponent },
-  { path: 'mole', component: WhackMoleComponent },
+  { path: 'drumkit', loadChildren: () =>
+  import('./drumkit/drunkit.module').then((m) => m.AppDrumkitModule) },
+  {
+    path: 'clock',
+    loadChildren: () =>
+      import('./clock/clock.module').then((m) => m.AppClockModule)
+  },
+  { path: 'flex', loadChildren: () =>
+  import('./flex-panels/flex.module').then((m) => m.AppFlexModule) },
+
+  {
+    path: 'canvas',
+    loadChildren: () =>
+      import('./canvas-funn/canvas.module').then((m) => m.AppCanvasModule)
+  },
+
+  {
+    path: 'cssvariables',
+    loadChildren: () =>
+      import('./css-varaibles/css-variables.module').then(
+        (m) => m.AppCssVariablesModule
+      )
+  },
+  { path: 'mole',loadChildren: () =>
+  import('./whack-mole/mole.module').then(
+    (m) => m.AppMoleModule
+  ), },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes)],
 
-
-exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
