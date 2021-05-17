@@ -1,0 +1,11 @@
+<div>
+    <p>Items u need to buy:</p>
+</div>
+
+<li *ngFor="let item of shoppingItems$ | async" class="item" [ngClass]="{'bought': item.bought}" >
+  <span>{{ item.name }}</span>
+<span class="buttons">
+  <button (click)="removeItem(item)">Delete</button>
+  <button (click)="toggleItem(item)">Toggle</button>
+</span>
+</li>

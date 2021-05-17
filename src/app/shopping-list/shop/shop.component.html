@@ -1,0 +1,14 @@
+
+<div class="main">
+    <p>Add items to your list!</p>
+    <form>
+            <input class="input"
+            type="text"
+            placeholder="Add new Item"
+            [(ngModel)]="newItemName"
+            [ngModelOptions]="{standalone: true}"
+          />
+          <button class="button" type="submit" (click)="addItem()">Add</button>
+    </form>
+    <app-shopping-list></app-shopping-list>
+</div>

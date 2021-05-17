@@ -1,0 +1,21 @@
+
+.buttons{
+    float: right;
+}
+
+button{
+    margin-left: 5px;
+
+}
+
+.bought{
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+
+.item {
+    padding: 10px;
+    background: rgba(0, 163, 192, 0.507);
+    margin: 4px;
+    border-radius: 5px;
+}

@@ -14,6 +14,7 @@ buttons = [
   {name: 'Canvas Funn', root: 'canvas'},
   {name: 'CSS Variables', root: 'cssvariables'},
   {name: 'Whack-a-mole', root: 'mole'},
+  {name: 'NGRX shop', root: 'shop'},
 
 ];
 

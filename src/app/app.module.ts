@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     AppComponent,
     MainPageComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
