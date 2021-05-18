@@ -1,0 +1,85 @@
+<div class="cont"></div>
+
+<div class="container">
+  <div class="game">
+    <div
+      class="row justify-content-center"
+    >
+      <div class="col">
+        <div class="row">
+          <div class="col text-center">
+            <p>Remaining errors: </p>
+            <p>{{ this.game.remainingSteps() || 0 }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center" *ngIf="this.game.checkWin()">
+            <p>Congrats you win!</p>
+          </div>
+          <div class="col text-center" *ngIf="this.game.remainingSteps() === 0">
+            <p>Sorry you lost! Poor man... :(</p>
+          </div>
+        </div>
+      </div>
+      <div class="col hangman-container">
+        <svg viewBox="0 0 10 12">
+          <path *ngIf="game.errorSteps > 0" d="M1,11 h8" />
+          <path *ngIf="game.errorSteps > 1" d="M9,11 v-10" />
+          <path *ngIf="game.errorSteps > 2" d="M9,1 h-4" />
+          <path *ngIf="game.errorSteps > 3" d="M5,1 v2" />
+          <circle *ngIf="game.errorSteps > 4" cx="5" cy="4" r="1" />
+          <path *ngIf="game.errorSteps > 5" d="M5,5 v3" />
+          <path *ngIf="game.errorSteps > 6" d="M5,5 l-2,2" />
+          <path *ngIf="game.errorSteps > 7" d="M5,5 l2,2" />
+          <path *ngIf="game.errorSteps > 8" d="M5,8 l-2,2" />
+          <path *ngIf="game.errorSteps > 9" d="M5,8 l2,2" />
+        </svg>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col text-center">
+        <p>Your Guess:</p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="d-flex text-center">
+        <ul id="guess">
+          <li
+            *ngFor="let letter of game.playerGuess"
+            [ngClass]="letter === '_' ? 'emptyGuess' : 'notemptyGuess'"
+          >
+            {{ letter }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col text-center">
+        <span *ngFor="let button of buttons; let i = index">
+          <button
+            class="btn btn-secondary buttons"
+            (click)="onButtonClicked(button)"
+            [disabled]="
+              button.clicked ||
+              this.game.checkWin() ||
+              this.game.remainingSteps() === 0
+            "
+          >
+            {{ button.letter }}
+          </button>
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <button
+          type="button"
+          class="btn btn-primary button-margin"
+          (click)="newGame()"
+        >
+          New Game
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+svg path,
+svg circle {
+  stroke: #000;
+  stroke-width: 0.25;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.buttons{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.button-margin{
+    margin-top: 5px;
+}
+
+.emptyGuess{
+    color: white;
+
+}
+
+.game{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 500px;  
+}
+
+.hangman-container{
+    max-width: 200px;
+    border: 2px solid;
+    border-radius: 10px;;
+}
+
+li{
+    border: 5px solid black;
+    border-width: thin;
+    display: inline-block;
+    list-style: none;
+    width: 30px;
+    margin: 5px;
+    height: 30px;
+  }
+
+.notemptyGuess{
+color: black;
+}
+
+.row{
+   margin-top: 5px;
+} 
+

@@ -45,6 +45,13 @@ const routes: Routes = [
         (m) => m.AppShopModule
       ),
   },
+  {
+    path: 'hangman',
+    loadChildren: () =>
+      import('./hangman/hangman.module').then(
+        (m) => m.AppHangmanModule
+      ),
+  },
 ];
 
 @NgModule({
